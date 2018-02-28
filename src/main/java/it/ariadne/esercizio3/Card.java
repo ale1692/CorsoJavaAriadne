@@ -55,7 +55,6 @@ public class Card {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return "Seme: " + String.valueOf(suit) + " - - Valore: " + String.valueOf(rank);
 	}
 }

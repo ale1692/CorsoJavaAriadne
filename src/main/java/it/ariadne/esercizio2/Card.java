@@ -58,9 +58,11 @@ public class Card {
 			if (suitEnum.getSuit() == suit) {
 
 				String temporary = String.valueOf(suitEnum);
-				String suitConversion = String.valueOf(temporary.charAt(0))
-						+ temporary.substring(1, temporary.length()).toLowerCase();
-				return suitConversion;
+				StringBuilder builder = new StringBuilder();
+				builder.append(String.valueOf(temporary.charAt(0)))
+						.append(temporary.substring(1, temporary.length()).toLowerCase());
+				
+				return builder.toString();
 			}
 		}
 		return null;

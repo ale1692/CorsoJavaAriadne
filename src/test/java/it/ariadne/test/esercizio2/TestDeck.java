@@ -35,8 +35,14 @@ public class TestDeck {
 	}
 
 	@Test
-	public void testString() {
+	public void testRankString() {
 		Assert.assertEquals("Test conversion: ", "Ten", card.rankToString(card.getRank()));
+
+	}
+	
+	@Test
+	public void testSuitString() {
+		Assert.assertEquals("Test conversion: ", "Picche", card.suitToString(card.getSuit()));
 
 	}
 

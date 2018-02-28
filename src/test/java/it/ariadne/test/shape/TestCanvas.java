@@ -1,4 +1,4 @@
-package it.ariadne.test.shapes;
+package it.ariadne.test.shape;
 
 import org.junit.Assert;
 import org.junit.Before;

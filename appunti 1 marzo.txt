@@ -1,0 +1,110 @@
+Repository Java8: esempi
+
+switch java8 posso passare le stringhe come variabile di input. Break posso usarli dovunque. Anche non metterli.
+Java -> compilazione non nativa bytecode. Runtime di java -> JVM prende il compilatore e lo esegue e lo traduce in codice macchina (JIT).
+JVM specifica per ogni sistema operativo.
+
+JVM -> SUN chiamata HotSpot
+
+Class Loader, Stack (contiene l'elenco a stack delle chiamate dei metodi locali, varibili locali al metodo organizzate a pila)
+
+JVM salta da un Thread ad un altro in base al tipo di istruzione bloccante o no. MultiTasking. Distribuisce i thread.
+
+thread nativi -> compilazione, garbage collector (non si tocca)
+
+Java Thread -> gestione dei Thread da codice Java
+
+Execution Engine -> compilatore JIS 
+Garbage Collector
+
+Metodi Nativi -> programmazione a basso livello (posso aggiungere dei metodi)
+
+Durata, risparmio memoria, velocità di risposta.
+
+Garbage Collector -> ferma tutto (Stop the world) -> deve durare poco
+
+Throughput -> Volume -> gestione corretta della memoria
+
+Garbage Collection automatica -> Heap -> Stack (Programmazione ricorsiva) -> metodi ricorsivi (il piede) funzione che chiama se stessa
+
+Stack overflow -> cattiva programmazione -> Heap
+
+Out of Memory ha terrminato la memoria di terminazine sullo heap. Controlla gli oggeti in uso.
+
+Marcatura porzioni di memoria in uso. 
+Cancellazione normale -> memoria frammentata
+Cancellazione con compattazione -> riporti gli oggetti all'inizio della memoria.
+
+cancellazione marcatura ---> età e probabilità -> Controllo: oggetti giovani più alta è la probabilità di essere marcati per la cancellazione.
+
+Java collection Basics
+
+Heap HotSpot: young, old and pern generation (non dipendono dal tuo programma jvm alloca qua i suoi oggetti è una specie di heap che non è soggetto di garbage collector, se è un errore di questo tipo vuol fdire che ha esauito lo spazio permanente della memoria
+).
+
+old generation -> frequenza minore.
+youn generation -> recupero spazio. Maggiore frequenza di controllo.
+
+headan space -> new se sopravvive passa il primo giro di marking, swip. passa al surviver space. 
+
+swip -> stop the world brevi e efficaci -> è molto minore. pochi oggeti giovani che muiono di continuo.
+
+
+eva oggetto -> headen
+età -> garbage swip 
+garbage parte quando headen si riempe. al momento della successiva new scatta garbage spazzola l'headen. mark swip. sposta al primo surviver space.
+
+swip anche sul primo surviver space cercando di riempire anche il secondo survier space. Travaso tra gli spazi.
+Oggeti nel surviver ragioungon un numero di limite (8) passati questi sono prossimi nel Teneur (Maggior swip, analizza la teneur e fa la cancellazione definitiva. se non riesco a liberare vado in out fo memory)
+
+stack -> xmxs1024m
+comando jvisualvm.exe
+
+Vedere tool JVM PermGen, andamento headen space. ----> spike garbage collector svuota la parte di memoria.
+Stop the world brevi.
+Profiler cliccare su memory 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Eccezioni: Runtime() posso avvenire
+
+Esempio: StringBuilder ciao = null; null pointer exception. Posso catchare a runtime con try catch.
+
+Controllare io volontariemente di cathcare le eccezioni. try catch finally.
+extends Exception da catchare obbligatori.
+extends RuntimeException non sono da catchare.
+
+Uso finally, gestire alcune funzioni fondamentali. Sopratutto quando impegno delle risorse. (Scrittura sul disco)
+chiusura file nel finally. libero sitema operativo. chiusura e pulizia. database (Connection leak. try + finally catch non obbligatorio);
+Java 7 in avanti AutoClosable() gli oggetti che implemetano questa interfaccia quando lascio il try si chiudono automaticamente.
+implements Autoclosable override di quel metodo. try (Resource res=)
+throw creo un oggetto di tipo exception
+java exception class diagram su google.
+
+Divide by zero Runtime
+IoException, SqlException. (eccezione padre) || posso usarlo se una eccezzione non comprende un altra cioè non sono padre e figli. Se uso i mltipli catch, convenzione da più specifiche a meno specifiche.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Collection supertipo.
+List
+Set elimina gli elementi duplicati (unsorted, unordered). ->SortedSet
+Map -> dizionario -> k (unsorted), V(unordered). ->SortedMap 
+interface Comparable (compareTo).
+Queue coma una lista aggiungi in cima e leggi dal fondo.
+
+ArrayList (10 eleementi di default) heap spazio contiguo, se non riesce parte garbage collector per fargli spazio.
+LinkedList -> veloce nell'inserimento ma lento a leggerlo. allocati sparsi nello heap.
+Vector -> non usare.
+Thread unsafe. Thread paralleli, con vector non c'è problema di concorrenza, accodare per aspettare le modifiche.
+HahSet -> come arraylist.
+set ordinato Treeset.
+K HashMap sono HashSet.
+TreeMap chiavi ordinate.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Comparable compareto ordinamento.
+Comparator compare
+------------------------------------------------------------------
+Compiti: vedere 4 esempi eccezzioni nel package java8.
+Vedere indicazioni prima settimana, Business Logic, Schema dei casi d'uso.
+TreeMap
+
+

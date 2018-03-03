@@ -48,7 +48,7 @@ public class TestCollection {
 		
 		Map <String, Persona> mappa2=new TreeMap<>();
 		
-		for (Iterator iterator = mappa2.keySet().iterator(); iterator.hasNext();) {
+		for (Iterator <String> iterator = mappa2.keySet().iterator(); iterator.hasNext();) {
 			String persona = (String) iterator.next();
 			System.out.println("Nome: " + persona);
 		}
@@ -90,7 +90,7 @@ class Persona implements Comparable {
 	@Override
 	public int compareTo(Object p) {
 		
-		//invertito segno
+		//invertito segno moltiplicando -1
 		return ((Persona) p).getNome().compareTo(this.nome)*-1;
 	}
 }

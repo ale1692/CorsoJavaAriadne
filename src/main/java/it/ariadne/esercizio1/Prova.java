@@ -33,7 +33,7 @@ public class Prova {
 //			String ciao=null;
 //			int l=ciao.length();
 			System.out.println("Sono alla fine try");
-			//throw new MyException();
+			throw new MyException();
 
 		} catch (Exception e) {
 
@@ -46,15 +46,6 @@ public class Prova {
 	}
 
 	
-	//Provare dopo
-	private class MyException extends RuntimeException{
-
-		public MyException() {
-			super();
-			System.out.println("mia eccezione");
-		}
-
-	}
 	
 
 	private static void prova() {
